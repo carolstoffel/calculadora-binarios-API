@@ -12,18 +12,24 @@ class BinariosSerializer(ModelSerializer):
 
     def to_representation(self, data):
         data = super(BinariosSerializer, self).to_representation(data)
-        soma = int(data['numero1'], 2)+int(data['numero2'], 2)
-        data['binario'] = bin(soma)[2:]
-        '''
+
         if data['operacao'] == '+':
-            r = add(data['numero1'], data['numero2'])
+            r = add(int(data['numero1'], 2), int(data['numero2'], 2))
         elif data['operacao'] == '-':
-            r = sub(data['numero1'], data['numero2'])
+            r = sub(int(data['numero1'], 2), int(data['numero2'], 2))
         elif data['operacao'] == '/':
-            r = floordiv(data['numero1'], data['numero2'])
+            r = floordiv(int(data['numero1'], 2), int(data['numero2'], 2))
         elif data['operacao'] == '*':
-            r = mul(data['numero1'], data['numero2'])
+            r = mul(int(data['numero1'], 2), int(data['numero2'], 2))
         elif data['operacao'] == '%':
-            r = mod(data['numero1'], data['numero2'])
-        data['resposta'] = r'''
+            r = mod(int(data['numero1'], 2), int(data['numero2'], 2))
+        data['resultado em binario'] = bin(r)[2:]
         return data
+        '''
+        No exercício está escrito que a saída deve ser a resposta, 
+        porém achei mais interessante retornar todos os dados inseridos com a resposta.
+        Para retornar apenas o resultado da operação, seria adicionar as linhas abaixo:
+        saida = {}
+        saida['resultado em binario'] = data['resultado em binario']
+        return saida
+        '''
