@@ -24,4 +24,4 @@ http://127.0.0.1:8000/calculadora/
 ### Screenshoot
 ![](https://i.ibb.co/R2fbZPC/calculadora.png)
 
-> Conversor de imagem
+> Calculadora de Binarios API
